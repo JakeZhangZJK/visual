@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+  <svg width="800" height="800">
+    <!-- 矩形 -->
+    <rect width="50" height="50" style="fill:red;" />
+    <!-- 直线 -->
+    <line x1="100" y1="5" x2="250" y2="5" style="stroke:blue;stroke-width: 1;" />
+    <line x1="250" y1="5" x2="300" y2="100" style="stroke:blue;stroke-width: 1;" />
+    <!-- 圆 -->
+    <circle cx="400" cy="25" r="25" stroke="green" stroke-width="2" fill="red" />
+    <!-- 椭圆 -->
+    <ellipse cx="450" cy="100" rx="100" ry="50" fill="red" stroke="green" stroke=width="2" />
+    <!-- 折线 不设置样式属性style是看不出效果的 并且polyline默认为填充需要把fill属性设置为none -->
+    <polyline points="0 0, 20 40, 70 80, 100 90, 200 30, 250 50" fill="none" style="stroke: #000000;" />
+    <!-- 路径 -->
+    <path d="M0 200 H 200 V 400 H 0 L 0 200" fill="none" style="stroke: #000000;" />
+    <!-- 文字 -->
+    <text x="20" y="500">Hello Svg !</text>
+    <!-- 文字：dx和dy属性是相对于当前位置的偏移量，如果设置为了一个数列则会应用到每一个字符上-->
+     <text 
+      dx="20 10 10 10 10 10 10 10 10" 
+      dy="550 20 -20 20 -20 20 -20 20 -20" 
+      fill="#000" 
+      stroke="#0f0" 
+      font-size="50"
+      font-weight="bold" >
+      Hello Svg !
+    </text>
+    <!-- 文字：rotate属性：把文字旋转一个角度，同样的参数也可以是一个数列。如果设置为了一个数列则会应用到每一个字符上 -->
+     <text x="400" y="550" rotate="10" fill="#999" stroke="#0f0" font-size="50" font-weight="bold">
+       Hello Svg !
+     </text>
+     <!-- 文字：tspan标签的作用为标记大块文本内的部分内容。比如一段文本其中某个字需要加粗或者颜色不一致，就可以用到tspan标签 -->
+     <text x="20" y="630" fill="#f00" stroke="#0f0" font-size="50">
+       Hello <tspan fill="pink" font-weight="bold"> Svg !</tspan>
+     </text>
+  </svg>
+</body>
+
+</html>
