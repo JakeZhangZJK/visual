@@ -1,36 +1,97 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body>
-    <canvas id="canvas" width="800" height="800"></canvas>
-    <script>
-      const canvas = document.getElementById('canvas');
-      const ctx = canvas.getContext('2d'); // 获取到 Canvas 对象
-      ctx.fillStyle = 'red'; // 修改填充色为红色
-      ctx.fillRect(0, 0, 50, 50); // 绘制矩形
 
-      ctx.beginPath();
-      ctx.lineWidth = 1; // 线条宽度
-      ctx.strokeStyle = 'blue'; // 线条填充色
-      ctx.moveTo(100, 100); // 起点坐标
-      ctx.lineTo(250, 75); // 中间点坐标
-      ctx.lineTo(300, 100); // 终点坐标
-      ctx.stroke(); // 绘制线段
+<head></head>
 
-      ctx.beginPath();
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = 'green';
-      ctx.fillStyle = 'red';
-      ctx.arc(200, 200, 50, 0, 2 * Math.PI); // 绘制圆形
-      ctx.stroke();
-      ctx.fill();
+<body>
+  <canvas id="canvas" width="800" height="800"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d'); // 获取到 Canvas 对象
+    
 
-      ctx.beginPath();
-      ctx.lineWidth = 1; // 线条宽度
-      ctx.strokeStyle = 'red'; // 线条填充色
-      ctx.moveTo(300, 300); // 起点坐标
-      ctx.lineTo(301, 301); // 中间点坐标
-      ctx.stroke(); // 绘制线段
-    </script>
-  </body>
+    ctx.beginPath();
+    ctx.lineWidth = 1; // 线条宽度
+    ctx.strokeStyle = '#000'; // 线条填充色
+    ctx.moveTo(10, 10); // 起点坐标
+    ctx.lineTo(100, 10); // 中间点坐标
+    ctx.stroke(); // 绘制线段1 若所有线段width一致，只需要在最后调用一次
+    ctx.lineWidth = 2; // 线条宽度
+    ctx.lineTo(120, 70); // 终点坐标
+    ctx.stroke(); // 绘制线段2
+
+    // 设置线宽，方便演示
+    ctx.lineWidth = 20
+    // 方形线帽 square
+    ctx.beginPath()
+    ctx.lineCap = 'square'
+    ctx.moveTo(140, 30)
+    ctx.lineTo(300, 30)
+    ctx.stroke()
+    // 圆形线帽 round
+    ctx.beginPath()
+    ctx.lineCap = 'round'
+    ctx.moveTo(140, 60)
+    ctx.lineTo(300, 60)
+    ctx.stroke()
+
+    // 默认，尖角
+    ctx.lineCap = 'square'
+    ctx.beginPath()
+    ctx.lineWidth = 20
+    ctx.moveTo(350, 30)
+    ctx.lineTo(400, 30)
+    ctx.lineTo(400, 70)
+    ctx.stroke()
+
+    // 斜角 bevel
+    ctx.beginPath()
+    ctx.moveTo(450, 30)
+    ctx.lineTo(500, 30)
+    ctx.lineTo(500, 70)
+    ctx.lineJoin = 'bevel'
+    ctx.stroke()
+
+    // 圆角 round
+    ctx.beginPath()
+    ctx.moveTo(550, 30)
+    ctx.lineTo(600, 30)
+    ctx.lineTo(600, 70)
+    ctx.lineJoin = 'round'
+    ctx.stroke()
+
+
+    ctx.fillStyle = 'red'; // 修改填充色为红色
+    ctx.fillRect(0, 150, 100, 100); // 绘制矩形
+
+    ctx.lineWidth = 1
+    ctx.beginPath();
+    ctx.strokeStyle = 'green';
+    ctx.fillStyle = 'red';
+    ctx.arc(200, 200, 50, 0, 2 * Math.PI); // 绘制圆形
+    ctx.stroke();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.lineWidth = 1; // 线条宽度
+    ctx.strokeStyle = 'red'; // 线条填充色
+    ctx.moveTo(300, 200); // 起点坐标
+    ctx.lineTo(301, 201); // 中间点坐标
+    ctx.stroke(); // 绘制线段
+
+
+    // 文本
+    ctx.font = '60px Arial'
+    ctx.fillStyle = 'blue'; // 填充色
+    // 填充文本 ctx.fillText(text, x, y, maxWidth) maxWidth: 可选参数，
+    // 表示文本渲染的最大宽度（px），如果文本超出 maxWidth 设置的值，文本会被压缩。
+    ctx.fillText('hello canvas!', 0, 300) 
+    ctx.strokeText('hello canvas!', 0, 360) // 描边
+
+    console.log(ctx.measureText(text).width) // 获取文本宽度
+
+
+  </script>
+</body>
+
 </html>
