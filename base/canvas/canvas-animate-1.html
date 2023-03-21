@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+  </body>
+  <script>
+    const canvas = document.getElementById('canvas');
+    var W = document.documentElement.clientWidth;
+    var H = document.documentElement.clientHeight;
+    canvas.width = W;
+    canvas.height = H;
+    let cx = 0;
+    let cy = 0;
+    let iSpeedX = 6; // x轴速度
+    let iSpeedY = 6; // y轴速度
+
+    const draw = () => {
+      let ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, W, H);
+      ctx.beginPath();
+      cx += iSpeedX;
+      cy += iSpeedY;
+      if (cx + 50 > W) { //注意arc是从圆心画的所以是50不是100
+        iSpeedX *= -1;
+        ctx.fillStyle = 'red';
+      }
+      if (cy + 50 > H) {
+        iSpeedY *= -1;
+        ctx.fillStyle = 'red';
+      }
+      if (cx < 50 && iSpeedX != 6) { //注意arc是从圆心画的所以是50不是100
+        iSpeedX *= -1;
+        ctx.fillStyle = 'green';
+      }
+      if (cy < 50 && iSpeedY != 6) {
+        iSpeedY *= -1;
+        ctx.fillStyle = 'blue';
+      }
+      ctx.arc(cx, cy, 50, d2a(0), d2a(360));
+      ctx.fill();
+      window.requestAnimationFrame(draw); //这里用递归不然循环不起来
+    }
+
+    const random = (n, m) => {
+      return parseInt(Math.random() * (m - n) + n);
+    }
+
+    const d2a = (n) => {
+      return n * Math.PI / 180;
+    }
+    window.requestAnimationFrame(draw);
+  </script>
+</body>
+
+
+</html>
