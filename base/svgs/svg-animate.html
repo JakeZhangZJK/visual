@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <svg width="960px" height="400px" viewBox="0 0 960 400">
+    <g id="shape-page">
+      <circle id="circle" fill="#FF1493" cx="120" cy="120" r="30"></circle>
+    </g>
+  </svg>
+  <script src="https://cdn.jsdelivr.net/npm/gsap"></script>
+  <script>
+    // 描述了使目标 circle 在两秒内向 x 轴位移 320px, y轴位移100px
+    gsap.to('#circle', {
+    x: 320,
+    y:100,
+    duration: 2
+    })
+  </script>
+</body>
+</html>

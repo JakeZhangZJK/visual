@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <svg width="400px" height="500px" viewrect="400 500">
+    <rect class="rect" x="20" y="20" width="50" height="50" style="fill:red;" />
+    <rect class="rect" x="20" y="90" width="50" height="50" style="fill:green;" />
+    <rect class="rect" x="20" y="160" width="50" height="50" style="fill:blue;" />
+  </svg>
+
+  <div class="wraper">
+    <button class="play">播放</button>
+    <button class="pause">暂停</button>
+    <button class="reverse">回放</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap"></script>
+  <script>
+    const play = document.querySelector(".play");
+    const pause = document.querySelector(".pause");
+    const reverse = document.querySelector(".reverse");
+
+    // 先定义一条时间线
+    let tl = gsap.timeline({
+      duration: 1
+    });
+
+    // 开始基于时间线做一些动画 结合上面的 gsap.to 和 gsap.from
+    tl.to(".rect", {
+      x: 200,
+      opacity: 0.5,
+      stagger: .1, // 控制多个目标的时间间隔
+    }).to(".rect", {
+      rotation: 360,
+      transformOrigin: '50% 50%',
+      stagger: .1,
+      repeat: -1, // 重复次数 -1为循环
+      yoyo: true // 是否往返
+
+    });
+
+    play.onclick = () => {
+    tl.play();
+    }
+    pause.onclick = () => {
+    tl.pause();
+    }
+    reverse.onclick = () => {
+    tl.reverse();
+    }
+  </script>
+</body>
+
+</html>

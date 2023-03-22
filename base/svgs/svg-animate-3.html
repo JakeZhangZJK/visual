@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .content {
+      font-size: 5rem;
+      position: relative;
+      background-color: #000;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .char {
+      display: inline-block;
+      margin-right: 6px;
+      opacity: 0.3;
+      transform: translateY(-150px);
+      transition: transform .3s ease-in-out;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <svg width="600" height="200">
+      <text class="char" x="100" y="100" fill="#fff" stroke="red" font-size="50" font-weight="bold"> H </text>
+      <text class="char" x="150" y="100" fill="#fff" stroke="red" font-size="50" font-weight="bold">E</text>
+      <text class="char" x="200" y="100" fill="#fff" stroke="red" font-size="50" font-weight="bold">L</text>
+      <text class="char" x="250" y="100" fill="#fff" stroke="red" font-size="50" font-weight="bold">L</text>
+      <text class="char" x="300" y="100" fill="#fff" stroke="red" font-size="50" font-weight="bold">O</text>
+      <text class="char" x="350" y="100" fill="#fff" stroke="red" font-size="50" font-weight="bold"> </text>
+
+      <text class="char" x="400" y="100" fill="#fff" stroke="red" font-size="50" font-weight="bold">S</text>
+      <text class="char" x="450" y="100" fill="#fff" stroke="red" font-size="50" font-weight="bold">V</text>
+      <text class="char" x="500" y="100" fill="#fff" stroke="red" font-size="50" font-weight="bold">G</text>
+      <text class="char" x="550" y="100" fill="#fff" stroke="red" font-size="50" font-weight="bold">!</text>
+
+    </svg>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap"></script>
+  <script>
+    const tl = gsap.timeline({});
+    tl.to(".char", {
+      opacity: 1,
+      delay: .1,
+      duration: .5,
+      y: 0,
+      ease: "Power4.inOut",
+      stagger: 0.1,
+    })
+
+    
+
+  </script>
+</body>
+
+</html>l
