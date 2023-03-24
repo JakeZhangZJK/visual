@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.simple.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <style>
+    #chart {
+      width: 800px;
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 需要给容器设置宽高 -->
+  <div id="chart"></div>
+  <!-- // 引入自定义主题 -->
+  <script src="./chalk.js"></script>
+  <script>
+    const categories = ['食品', '数码', '服饰', '箱包', '家具']
+    const genDataArr = () => {
+      return categories.map(t => {
+        return Math.ceil(Math.random() * 100)
+      })
+    }
+    // 1. 获取容器dom
+    const chartDom = document.getElementById('chart');
+    // 2. 初始化ECharts对象
+    const chart = echarts.init(chartDom, 'chalk');
+    // 3. 编写 option 参数,调用 setOption 完成渲染
+    chart.setOption({
+      // 标题
+      title: {
+        text: 'ECharts入门案例'
+      },
+      // x轴 数据
+      xAxis: {
+        data: categories
+      },
+      // y轴数据
+      yAxis: {},
+      series: {
+        type: 'bar', // 图表类型
+        data: genDataArr()
+      }
+    });
+
+    // 给个定时器，增加点趣味
+    setInterval(() => {
+      chart.setOption({
+        series: [{
+          data: genDataArr()
+        }]
+      })
+    }, 1000)
+  </script>
+</body>
+
+</html>
